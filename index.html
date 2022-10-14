@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Search</title>
+    <link rel="stylesheet" href="css/fontello.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <div id="_div"></div>
+            <i id="sun" class="icon-sun-filled "></i>
+            <i id="moon" class="icon-moon "></i>
+
+        </section>
+
+
+        <input type="search" id="search" placeholder="SEARCH YOUR NAME">
+        <ul>
+            <li>ali</li>
+            <li>abbas</li>
+            <li>hasan</li>
+            <li>ahmad</li>
+            <li>shayan</li>
+            <li>shima</li>
+            <li>mina</li>
+            <li>kamran</li>
+            <li>davood</li>
+            <li>eraj</li>
+            <li>parmida</li>
+            <li>iran</li>
+            <li>mahro</li>
+            <li>sara</li>
+            <li>sina</li>
+            <li>ashkan</li>
+            <li>leila</li>
+            <li>darya</li>
+            <li>zahra</li>
+            <li>vida</li>
+            <li>nahid</li>
+            <li>navid</li>
+            <li>morteza</li>
+            <li>mozafar</li>
+            <li>javad</li>
+            <li>bahar</li>
+            <li>baran</li>
+            <li>hamed</li>
+            <li>dorsa</li>
+            <li>saman</li>
+            <li>arsam</li>
+            <li>taha</li>
+            <li>rasool</li>
+            <li>paniz</li>
+            <li>sajad</li>
+            <li>saman</li>
+            <li>daniel</li>
+            <li>yavar</li>
+            <li>rasta</li>
+            <li>tina</li>
+            <li>parsa</li>
+
+        </ul>
+
+
+    </main>
+
+
+    <script>
+        let search = document.getElementById('search')
+        let list = document.querySelectorAll('ul>li')
+
+        list.forEach(function (a) {
+            a.setAttribute('data-name', (a.innerText))
+
+        })
+
+
+
+        search.addEventListener('input', function () {
+            val = search.value
+
+            list.forEach(function (i) {
+                i.style.display = 'none'
+                _li = i.getAttribute('data-name')
+                _li = _li.substring(0, val.length)
+
+
+
+                if (_li == val) {
+                    i.style.display = 'flex'
+                    i.innerHTML = '<b>' + _li + '</b>' + (i.getAttribute('data-name')).substring(val
+                        .length, (i.getAttribute('data-name')).length)
+                }
+                if (search.value == '' || search.value == null) {
+
+                    i.style.display = 'none'
+
+
+                }
+
+            })
+        })
+
+        list.forEach(function(self){
+            self.addEventListener('click',function(){
+                data = self.getAttribute('data-name')
+                search.value = data
+                for(turn= 0 ; turn <= list.length ; turn++){
+                    list[turn].style.display = 'none'
+
+
+                }
+
+                
+            })
+
+        })
+
+
+        let _div = document.getElementById('_div')
+        let sun = document.getElementById('sun')
+        let moon = document.getElementById('moon')
+        let sec = document.getElementsByTagName('section')[0]
+        let i = document.querySelectorAll('section>i')
+
+
+        moon.addEventListener('click',function(){
+            _div.style.transform='translateX(67px)'
+            _div.style.top='-2px'
+            document.getElementsByTagName('main')[0].style.background='black'
+            sec.classList.add('se')
+            _div.style.background='white'
+            search.style.border='2px solid white'
+            for(b=0;b<list.length;b++){
+                list[b].style.color='white'
+            }
+ 
+            
+        })
+        sun.addEventListener('click',function(){
+            _div.style.transform='translateX(0)'
+            _div.style.top='0'
+            document.getElementsByTagName('main')[0].style.background='rgb(242, 242, 98)'
+            sec.classList.remove('se')
+            _div.style.background='black'
+            for(b=0;b<list.length;b++){
+                list[b].style.color='black'
+            }
+ 
+            
+        })
+    </script>
+
+</body>
+
+</html>
